@@ -5,11 +5,11 @@ class Stack {
     this.size = sz;
   }
   push(value) {
-    if (this.top == size - 1) {
+    if (this.top == this.size - 1) {
       console.log('Stack is Full');
     } else {
       this.top++;
-      data[top] = value;
+      this.data[top] = value;
     }
   }
   pop() {
@@ -30,5 +30,8 @@ class Stack {
   }
 }
 var stk = new Stack();
-stk.push(5);
+stk.push(10);
+stk.push(20);
+stk.push(30);
+stk.push(40);
 stk.print();

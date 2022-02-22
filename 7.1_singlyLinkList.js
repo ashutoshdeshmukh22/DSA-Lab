@@ -1,5 +1,4 @@
 var head;
-
 class Node {
   constructor(val) {
     this.data = val;
