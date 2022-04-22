@@ -17,9 +17,10 @@ for (var i = 0; i < 2; i++) {
     }
   }
 }
-document.write(arr);
-document.write('<br>Max value in matrix is - ' + max);
-document.write('<br>Min value in matrix is - ' + min);
+
+console.log(arr);
+console.log('Max Value In Matrix is - ' + max);
+console.log('Min Value In Matrix is - ' + min);
 
 // function largestInColumn(cols, arr) {
 //   for (let i = 0; i < cols; i++) {

@@ -9,4 +9,5 @@ function toUniqueArray(a) {
 }
 var array = ['red', 'red', 'green', 'green', 'green'];
 var uniqueitems = toUniqueArray(array);
+console.log('Unique Elements are :');
 console.log(uniqueitems);

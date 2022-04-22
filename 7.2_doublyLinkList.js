@@ -105,13 +105,13 @@ class doubly {
   display() {
     let cur = this.head;
     if (this.head == null) {
-      document.write('Empty list');
+      console.log('Empty List');
     } else {
       while (cur.next) {
-        document.write(cur.data + '->');
+        console.log(cur.data) + '->';
         cur = cur.next;
       }
-      document.write(cur.data + '->null');
+      console.log(cur.data) + ' -> null';
     }
   }
 }
@@ -122,13 +122,13 @@ list1.insertatfirst(30);
 list1.insertatfirst(40);
 list1.insertatlast(50);
 list1.insertatlast(60);
-list1.insertatpos(90, 6);
-list1.insertatfirst(56);
+// list1.insertatpos(90, 6);
+// list1.insertatfirst(56);
 //list1.insertatpos(7,7);
 //list1.deleteatfirst();
 //list1.deleteatlast();
-list1.deleteatlast();
-list1.deleteatpos(3);
-list1.deleteatpos(4);
+// list1.deleteatlast();
+// list1.deleteatpos(3);
+// list1.deleteatpos(4);
 list1.display();
-document.write(list1.count);
+// console.log(list1.count);

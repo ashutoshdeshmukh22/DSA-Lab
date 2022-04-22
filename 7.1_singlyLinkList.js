@@ -1,122 +1,125 @@
-var head;
+//creating a node class
 class Node {
-  constructor(val) {
-    this.data = val;
+  constructor(value) {
+    this.data = value;
     this.next = null;
   }
 }
-
-function insertAtBegin(new_data) {
-  var new_node = new Node(new_data);
-  new_node.next = head;
-  head = new_node;
-}
-
-function insertAtLast(new_data) {
-  var new_node = new Node(new_data);
-  if (head == null) {
-    head = new Node(new_data);
-    return;
+//implementing linked list using class
+class SLL {
+  constructor() {
+    this.head = null; //head is null by default which means list is empty
+    this.size = 0; //keep track of size of the list . 0 by default
   }
-  new_node.next = null;
-
-  var last = head;
-  while (last.next != null) last = last.next;
-
-  last.next = new_node;
-  return;
-}
-
-function insertAtPos(value, pos) {
-  let cur = this.head;
-  let index = 0;
-  if (pos <= 0 || pos > this.count + 1) {
-    console.log('Out of Range');
-  } else {
-    if (pos == 1) this.insertAtBegin(value);
-    else if (pos == this.count + 1) this.insertAtLast(value);
-    else {
-      while (index < pos - 2) {
-        cur = cur.next;
-        index++;
+  //insert first node
+  insertFirst(value) {
+    //create new node
+    var newnode = new Node(value);
+    //if list is empty add the value and make it as first
+    if (this.head == null) {
+      //document.write("Empty List");
+      this.head = newnode;
+      this.size++;
+    } else {
+      newnode.next = this.head;
+      this.head = newnode;
+      this.size++;
+    }
+  }
+  //insert last node
+  insertLast(value) {
+    //creates new node
+    var newnode = new Node(value);
+    let current = this.head;
+    while (current.next) {
+      current = current.next;
+    }
+    current.next = newnode;
+    this.size++;
+  }
+  //insert at pos
+  insertPos(value, pos) {
+    var newnode = new Node(value);
+    let current = this.head;
+    let i = 1;
+    if (pos < 0 || pos > this.size) {
+      document.write('Invalid Position');
+    } else if (pos == 1) {
+      this.insertFirst(value);
+    } else if (pos == this.count) {
+      this.insertLast(value);
+    } else {
+      while (i < pos - 1) {
+        current = current.next;
+        i++;
       }
-      let temp = new Node(value);
-      temp.next = cur.next;
-      cur.next = temp;
+      newnode.next = current.next;
+      current.next = newnode;
+      this.size++;
     }
   }
-}
-
-function removeAtFirst() {
-  if (this.head == null) {
-    console.log('List is Empty');
-  } else {
-    let temp = this.head;
-    this.head = this.head.next;
-    temp = null;
-  }
-}
-
-function removeAtLast() {
-  if (this.head == null) {
-    console.log('List is Empty');
-  } else if (this.head.next == null) {
-    this.head.next = null;
-  } else {
-    let temp = this.head;
-    while (temp.next.next) {
-      temp = temp.next;
+  //delete first
+  deletefirst() {
+    let current = this.head;
+    if (this.head == null) {
+      document.write('Empty');
+    } else {
+      this.head = current.next;
+      current.next = null;
+      this.size--;
     }
-    temp.next = null;
+  }
+  //deletelast
+  deletelast() {
+    let current = this.head;
+    while (current.next.next) {
+      current = current.next;
+    }
+    current.next = null;
     this.count--;
   }
-}
-
-function removeFromPos(value) {
-  if (value < 1) {
-    console.log('position should be >= 1');
-  } else if (value == 1 && head != null) {
-    let nodeToDelete = head;
-    head = head.next;
-    nodeToDelete = null;
-  } else {
-    let temp = new Node();
-    temp = head;
-    for (let i = 1; i < value - 1; i++) {
-      if (temp != null) {
-        temp = temp.next;
-      }
-    }
-    if (temp != null && temp.next != null) {
-      let nodeToDelete = temp.next;
-      temp.next = temp.next.next;
-      nodeToDelete = null;
+  //delete at position
+  deletepos(pos) {
+    let i = 1;
+    let current = this.head;
+    if (pos < 0 || pos > this.count) {
+      document.write('Invalid position');
+    } else if (pos == 1) {
+      this.deletefirst();
     } else {
-      console.log('The Node is Already Null');
+      while (i < pos - 1) {
+        current = current.next;
+        i++;
+      }
+      let temp = current.next;
+      current.next = temp.next;
+      temp.next = null;
+      this.count--;
+    }
+  }
+  //display
+  display() {
+    let current = this.head;
+    if (current == null) {
+      console.log('Empty List');
+    } else {
+      while (current.next) {
+        console.log(current.data + '->');
+        current = current.next;
+      }
+      console.log(current.data + '-> null');
     }
   }
 }
-
-function printList() {
-  var tnode = head;
-  while (tnode != null) {
-    // document.write(tnode.data + ' ');
-    console.log(tnode.data + ' -> ');
-    tnode = tnode.next;
-  }
-}
-
-insertAtBegin(10);
-insertAtBegin(20);
-insertAtBegin(30);
-insertAtBegin(40);
-
-insertAtLast(50);
-
-insertAtPos(100, 3);
-
-// removeAtFirst();
-// removeAtLast();
-// removeFromPos(3);
-
-printList();
+var SLL1 = new SLL();
+SLL1.insertFirst(10);
+SLL1.insertFirst(20);
+SLL1.insertFirst(30);
+SLL1.insertFirst(40);
+SLL1.insertLast(50);
+SLL1.insertLast(60);
+SLL1.insertPos(11, 5);
+SLL1.deletefirst();
+SLL1.deletelast();
+SLL1.deletepos(2);
+SLL1.display();

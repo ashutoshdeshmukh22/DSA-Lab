@@ -13,4 +13,4 @@ function findSum(no) {
   return sum;
 }
 
-console.log(findSum(15));
+console.log('addition of all even numbers : ' + findSum(15));
